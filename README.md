@@ -1,2 +1,5 @@
 # memping
-Quick and dirty memory latency timer
+Quick and dirty Linux memory latency timer.
+
+Compile with:
+    # gcc memping.c -o memping -lrt
