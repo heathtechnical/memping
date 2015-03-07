@@ -1,6 +1,8 @@
 # memping
 Quick and dirty Linux memory latency timer.
 
+[![Build Status](https://travis-ci.org/heathtechnical/memping.svg?branch=master)](https://travis-ci.org/heathtechnical/memping)
+
 Compile with:
 
     # gcc memping.c -o memping -lrt
