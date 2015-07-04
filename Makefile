@@ -1,5 +1,10 @@
+SYSTEM=$(shell uname -s)
+
 CC=gcc
-LIBS=-lrt
+
+LIBS_Darwin=
+LIBS_Linux=-l rt
+LIBS=$(LIBS_$(SYSTEM))
 
 memping: 
 	$(CC) -o memping memping.c $(LIBS)

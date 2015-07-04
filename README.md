@@ -1,13 +1,11 @@
 # memping
-Quick and dirty Linux memory latency timer.
+Quick and dirty memory latency timer.
 
-[![Build Status](https://travis-ci.org/heathtechnical/memping.svg?branch=master)](https://travis-ci.org/heathtechnical/memping)
+Build:
 
-Compile with:
+    # cd memping; make
 
-    # gcc memping.c -o memping -lrt
-
-Run like:
+Run:
 
     $ ./memping -s 1024
     filled 1024 kb buffer in 0.50 ms

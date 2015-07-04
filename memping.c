@@ -5,6 +5,21 @@
 #include <unistd.h>
 #include <sys/mman.h>
 
+#ifdef __MACH__			// Fake clock_gettime on OS X
+#include <sys/time.h>
+
+#define CLOCK_REALTIME 0
+
+int clock_gettime(int clk_id, struct timespec* t) {
+    struct timeval now;
+    int rv = gettimeofday(&now, NULL);
+    if (rv) return rv;
+    t->tv_sec  = now.tv_sec;
+    t->tv_nsec = now.tv_usec * 1000;
+    return 0;
+}
+#endif
+
 int main(int argc, char **argv) {
 	int c;
 	long size = 64;
@@ -55,7 +70,7 @@ int main(int argc, char **argv) {
 			(double)(e.tv_nsec - s.tv_nsec) / 1.0e6;
 
 		// Print and sleep
-		printf("filled %d kb buffer in %0.2f ms\n", size, elapsed);
+		printf("filled %ld kb buffer in %0.2f ms\n", size, elapsed);
 		sleep(1);
 	}
 }
